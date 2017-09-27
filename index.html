@@ -22,10 +22,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		</script>
-		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery/jquery.min.js"></script>
 		<!--script-->
 		<link rel="stylesheet" href="css/jquery.bxslider.css" type="text/css" />
-		<script src="js/jquery.bxslider.js"></script>
+		<script src="js/jquery/jquery.bxslider.js"></script>
 			<script type="text/javascript">
 				$(document).ready(function(){
 					$('.bxslider').bxSlider({
@@ -64,13 +64,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!--webfonts-->
 		<!--start slider -->
 	    <link rel="stylesheet" href="css/fwslider.css" media="all">
-		<script src="js/jquery-ui.min.js"></script>
+		<script src="js/jquery/jquery-ui.min.js"></script>
 		<script src="js/css3-mediaqueries.js"></script>
 		<script src="js/fwslider.js"></script>
 		<!--end slider -->
 		<!--calender-style-->
 		<link rel="stylesheet" href="css/jquery-ui.css" />
 		<!--//calender-style-->
+
+		<!-- Search Flight -->
+		<!-- <link rel="stylesheet" type="text/css" href="css/search-flight.css">
+		<script type="text/javascript" src="js/search-flight.js"></script> -->
+
+		<link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css"/>
+		<script type="text/javascript" src="./js/moment.js"></script>
+		<script type="text/javascript" src="./js/daterangepicker.js"></script>
+		
+
 	</head>
 	<body>
 		<div class="header">
@@ -83,11 +93,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- start-top-nav-->
 				<div class="top-nav">
 						<ul class="flexy-menu thick orange">
-							<li class="active"><a href="index.html">Trang chủ</a></li>
-							<li><a href="#">Ưu đãi</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">Liên hệ</a></li>
-							<li><a type="button" data-toggle="modal" data-target="#myModal">Đăng nhập</a></li>
+							<li class="active"><label><a href="index.html">Trang chủ</a></label></li>
+							<li><label><a href="#">Ưu đãi</a></label></li>
+							<li><label><a href="#">Blog</a></label></li>
+							<li><label><a href="#">Liên hệ</a></label></li>
+							<li><label><a type="button" data-toggle="modal" data-target="#myModal">Đăng nhập</a><label></li>
 						</ul>
 						<!-- <div class="search-box">
 							<div id="sb-search" class="sb-search">
@@ -138,9 +148,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				    		<div id="div-login-msg">
                                 <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
                                 <span id="text-login-msg">Nhập tài khoản, mật khẩu của bạn.</span>
+
                             </div>
 				    		<input id="login_username" class="form-control" type="text" placeholder="Tài khoản" required>
 				    		<input id="login_password" class="form-control" type="password" placeholder="Mật khẩu" required>
+
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox"> Nhớ tài khoản
@@ -265,19 +277,424 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		    </div>
 		    <!--/slider -->
 		</div>
+
 		<!--start-find-place-->
+		<div class="find-header" style="background-color: #008aff;">
+				<h3 style="text-align: center;"> Tìm và đặt vé đơn giản với 3 bước </h3>
+		</div>
 		<div class="find-place">
-			<div class="wrap">
-				<!--strat-date-piker-->
-				  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-				  <script>
-				  $(function() {
-				    $( "#datepicker" ).datepicker();
-				  });
-				  </script>
-				<!--/End-date-piker-->
-				<!-- <iframe class="search-flight" src="./search-flight.html"></iframe> -->
-				<div class="clear"> </div>
+			<div class="row">
+				<div class="col-md-6">
+					<div>
+					  <h2>Nơi khởi hành</h2>
+						<select class="form-control" id="sel1" style="width: 80%">
+					        <option>Đà Lạt</option>
+					        <option>Đà Nẵng</option>
+					        <option>Hà Nội</option>
+					        <option>Hồ Chí Minh</option>
+						</select>
+					</div>
+					<div>
+					  <h2>Nơi đến</h2>
+						<select class="form-control" id="sel1" style="width: 80%">
+					        <option>Đà Lạt</option>
+					        <option>Đà Nẵng</option>
+					        <option>Hà Nội</option>
+					        <option>Hồ Chí Minh</option>
+						</select>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="col-md-6">
+					<!-- <div class="ticket-type" style="margin-top: 20px; display: none">
+						<form>
+							<label class="radio-inline">
+								<input type="radio" name="optradio" id="one-way" value="true" checked><h4>Một chiều</h4>
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="optradio" id="back-way"><h4>Khứ hồi</h4>
+							</label>
+						</form>
+					</div> -->
+					<div>
+						<h2 style="padding-left: 15px">Ngày khởi hành</h2>
+					
+				      <div class="container">
+				        <div class="well configurator" style="display: none">
+				           
+				          <form>
+				          <div class="row">
+
+				            <div class="col-md-4">
+
+				              <div class="form-group">
+				                <label for="parentEl">parentEl</label>
+				                <input type="text" class="form-control" id="parentEl" value="" placeholder="body">
+				              </div>
+
+				              <div class="form-group">
+				                <label for="startDate">startDate</label>
+				                <input type="text" class="form-control" id="startDate" value="07/01/2015">
+				              </div>
+
+				              <div class="form-group">
+				                <label for="endDate">endDate</label>
+				                <input type="text" class="form-control" id="endDate" value="07/15/2015">
+				              </div>
+
+				              <div class="form-group">
+				                <label for="minDate">minDate</label>
+				                <input type="text" class="form-control" id="minDate" value="" placeholder="MM/DD/YYYY">
+				              </div>
+
+				              <div class="form-group">
+				                <label for="maxDate">maxDate</label>
+				                <input type="text" class="form-control" id="maxDate" value="" placeholder="MM/DD/YYYY">
+				              </div>
+
+				            </div>
+				            <div class="col-md-4">
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="autoApply"> autoApply
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="singleDatePicker" checked="checked"> singleDatePicker
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="showDropdowns"> showDropdowns
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="showWeekNumbers"> showWeekNumbers
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="showISOWeekNumbers"> showISOWeekNumbers
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="timePicker"> timePicker
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="timePicker24Hour"> timePicker24Hour
+				                </label>
+				              </div>
+
+				              <div class="form-group">
+				                <label for="timePickerIncrement">timePickerIncrement (in minutes)</label>
+				                <input type="text" class="form-control" id="timePickerIncrement" value="1">
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="timePickerSeconds"> timePickerSeconds
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="dateLimit"> dateLimit (with example date range span)
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="ranges"> ranges (with example predefined ranges)
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="locale"> locale (with example settings)
+				                </label>
+				                <label id="rtl-wrap">
+				                  <input type="checkbox" id="rtl"> RTL (right-to-left)
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="alwaysShowCalendars"> alwaysShowCalendars
+				                </label>
+				              </div>
+
+				            </div>
+				            <div class="col-md-4">
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="linkedCalendars" checked="checked"> linkedCalendars
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="autoUpdateInput" checked="checked"> autoUpdateInput
+				                </label>
+				              </div>
+
+				              <div class="checkbox">
+				                <label>
+				                  <input type="checkbox" id="showCustomRangeLabel" checked="checked"> showCustomRangeLabel
+				                </label>
+				              </div>
+
+				              <div class="form-group">
+				                <label for="opens">opens</label>
+				                <select id="opens" class="form-control">
+				                  <option value="right" selected>right</option>
+				                  <option value="left">left</option>
+				                  <option value="center">center</option>
+				                </select>
+				              </div>
+
+				              <div class="form-group">
+				                <label for="drops">drops</label>
+				                <select id="drops" class="form-control">
+				                  <option value="down" selected>down</option>
+				                  <option value="up">up</option>
+				                </select>
+				              </div>
+
+				              <div class="form-group">
+				                <label for="buttonClasses">buttonClasses</label>
+				                <input type="text" class="form-control" id="buttonClasses" value="btn btn-sm">
+				              </div>
+
+				              <div class="form-group">
+				                <label for="applyClass">applyClass</label>
+				                <input type="text" class="form-control" id="applyClass" value="btn-success">
+				              </div>
+
+				              <div class="form-group">
+				                <label for="cancelClass">cancelClass</label>
+				                <input type="text" class="form-control" id="cancelClass" value="btn-default">
+				              </div>
+				            </div>
+				          </div>
+				          </form>	
+				        </div>
+
+				        <div class="row">
+				          <div class="col-md-4 demo">
+				          	<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+				            <input id="config-demo" class="form-control" readonly="" style="width: 100%; cursor: pointer; background-color: #fff" type="text">
+				          </div>
+				        </div>
+				        
+				      </div>
+
+				      <style type="text/css">
+				      .demo { position: static; }
+				      .demo i {
+				        position: absolute; top: 72px; right: 160px; bottom: auto; cursor: pointer;
+				      }
+				      </style>
+
+				      <script type="text/javascript">
+				      $(document).ready(function() {
+				        $('#config-text').keyup(function() {
+				          eval($(this).val());
+				        });
+				        
+				        $('.configurator input, .configurator select').change(function() {
+				          updateConfig();
+				        });
+
+				        $('.demo i').click(function() {
+				          $(this).parent().find('input').click();
+				        });
+
+				        $('#startDate').daterangepicker({
+				          singleDatePicker: true,
+				          startDate: moment().subtract(6, 'days')
+				        });
+
+				        $('#endDate').daterangepicker({
+				          singleDatePicker: true,
+				          startDate: moment()
+				        });
+
+				        updateConfig();
+
+				        function updateConfig() {
+				          var options = {};
+
+						  if ($('#singleDatePicker').is(':checked'))
+				            options.singleDatePicker = true;
+
+				          if ($('#showDropdowns').is(':checked'))
+				            options.showDropdowns = true;
+
+				          if ($('#showWeekNumbers').is(':checked'))
+				            options.showWeekNumbers = true;
+
+				          if ($('#showISOWeekNumbers').is(':checked'))
+				            options.showISOWeekNumbers = true;
+
+				          if ($('#timePicker').is(':checked'))
+				            options.timePicker = true;
+				          
+				          if ($('#timePicker24Hour').is(':checked'))
+				            options.timePicker24Hour = true;
+
+				          if ($('#timePickerIncrement').val().length && $('#timePickerIncrement').val() != 1)
+				            options.timePickerIncrement = parseInt($('#timePickerIncrement').val(), 10);
+
+				          if ($('#timePickerSeconds').is(':checked'))
+				            options.timePickerSeconds = true;
+				          
+				          if ($('#autoApply').is(':checked'))
+				            options.autoApply = true;
+
+				          if ($('#dateLimit').is(':checked'))
+				            options.dateLimit = { days: 7 };
+
+				          if ($('#ranges').is(':checked')) {
+				            options.ranges = {
+				              'Today': [moment(), moment()],
+				              'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+				              'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+				              'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+				              'This Month': [moment().startOf('month'), moment().endOf('month')],
+				              'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+				            };
+				          }
+
+				          if ($('#locale').is(':checked')) {
+				            $('#rtl-wrap').show();
+				            options.locale = {
+				              direction: $('#rtl').is(':checked') ? 'rtl' : 'ltr',
+				              format: 'MM/DD/YYYY HH:mm',
+				              separator: ' - ',
+				              applyLabel: 'Apply',
+				              cancelLabel: 'Cancel',
+				              fromLabel: 'From',
+				              toLabel: 'To',
+				              customRangeLabel: 'Custom',
+				              daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+				              monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+				              firstDay: 1
+				            };
+				          } else {
+				            $('#rtl-wrap').hide();
+				          }
+
+				          if (!$('#linkedCalendars').is(':checked'))
+				            options.linkedCalendars = false;
+
+				          if (!$('#autoUpdateInput').is(':checked'))
+				            options.autoUpdateInput = false;
+
+				          if (!$('#showCustomRangeLabel').is(':checked'))
+				            options.showCustomRangeLabel = false;
+
+				          if ($('#alwaysShowCalendars').is(':checked'))
+				            options.alwaysShowCalendars = true;
+
+				          if ($('#parentEl').val().length)
+				            options.parentEl = $('#parentEl').val();
+
+				          if ($('#startDate').val().length) 
+				            options.startDate = $('#startDate').val();
+
+				          if ($('#endDate').val().length)
+				            options.endDate = $('#endDate').val();
+				          
+				          if ($('#minDate').val().length)
+				            options.minDate = $('#minDate').val();
+
+				          if ($('#maxDate').val().length)
+				            options.maxDate = $('#maxDate').val();
+
+				          if ($('#opens').val().length && $('#opens').val() != 'right')
+				            options.opens = $('#opens').val();
+
+				          if ($('#drops').val().length && $('#drops').val() != 'down')
+				            options.drops = $('#drops').val();
+
+				          if ($('#buttonClasses').val().length && $('#buttonClasses').val() != 'btn btn-sm')
+				            options.buttonClasses = $('#buttonClasses').val();
+
+				          if ($('#applyClass').val().length && $('#applyClass').val() != 'btn-success')
+				            options.applyClass = $('#applyClass').val();
+
+				          if ($('#cancelClass').val().length && $('#cancelClass').val() != 'btn-default')
+				            options.cancelClass = $('#cancelClass').val();
+
+				          $('#config-text').val("$('#demo').daterangepicker(" + JSON.stringify(options, null, '    ') + ", function(start, end, label) {\n  console.log(\"New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')\");\n});");
+
+				          $('#config-demo').daterangepicker(options, function(start, end, label) { console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')'); });
+				          
+				        }
+
+				      });
+				      </script>
+					</div>
+					<div>
+							<div class="col-md-4">
+								<h3>Người lớn</h3>
+								<select class="form-control" id="sel1" style="width: 50%">
+						        <option>1</option>
+						        <option>2</option>
+						        <option>3</option>
+						        <option>4</option>
+						        <option>5</option>
+						        <option>6</option>
+						        <option>7</option>
+						        <option>8</option>
+						        <option>9</option>
+						        <option>10</option>
+							</select>
+							</div>
+							<div class="col-md-4">
+								<h3>Trẻ em</h3>
+								<select class="form-control" id="sel1" style="width: 50%">
+						        <option>1</option>
+						        <option>2</option>
+						        <option>3</option>
+						        <option>4</option>
+						        <option>5</option>
+						        <option>6</option>
+						        <option>7</option>
+							</select>
+							</div>
+							<div class="col-md-4">
+								<h3>Em bé</h3>
+								<select class="form-control" id="sel1" style="width: 50%">
+						        <option>1</option>
+						        <option>2</option>
+						        <option>3</option>
+						        <option>4</option>
+						        <option>5</option>
+						        <option>6</option>
+						        <option>7</option>
+							</select>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div style="text-align: right; padding-right: 8%">
+				<button type="button" class="btn btn-primary" style="margin-top: 20px; width: 410px">
+					<h4>Đặt vé</h4>
+				</button>
 			</div>
 		</div>
 		<!--//End-find-place-->
