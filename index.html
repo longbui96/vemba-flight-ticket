@@ -39,6 +39,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				});
 			</script>
 		<!--//script-->
+
+		<!-- Login Form -->
+		<link rel="stylesheet" type="text/css" href="./css/login-form.css">
+		<script type="text/javascript" src="./js/login-form.js"></script>
+
 		<!--smoth-scrlling-->
 			<script type="text/javascript">
 				$(document).ready(function(){
@@ -94,8 +99,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="top-nav">
 						<ul class="flexy-menu thick orange">
 							<li class="active"><label><a href="index.html">Trang chủ</a></label></li>
+							<li><label><a href="dat-ve.html">Đặt vé</a></label></li>
 							<li><label><a href="#">Ưu đãi</a></label></li>
-							<li><label><a href="#">Blog</a></label></li>
 							<li><label><a href="#">Liên hệ</a></label></li>
 							<li><label><a type="button" data-toggle="modal" data-target="#myModal">Đăng nhập</a><label></li>
 						</ul>
@@ -199,7 +204,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </div>
 		    				<input id="register_username" class="form-control" type="text" placeholder="Tài khoản" required>
                             <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
-                            <input id="register_password" class="form-control" type="password" placeholder="Mật khẩu" required>
+                            <input id="register_password" class="form-control" type="password" placeholder="Mật khẩu" required style="margin: 0px 0px">
+                            <input id="register_confirm_pass" class="form-control" type="password" placeholder="Nhập lại mật khẩu" required style="margin: 0px 0px 10px 0px">
+                            <div class="col-md-6" style="padding: 0px">
+                            	<input id="register_first_name" class="form-control" type="text" placeholder="Họ" required>
+                            </div>
+                            <div class="col-md-6" style="padding: 0px">
+                            	<div class="col-md-6" style="padding: 0px">
+                            		<input id="register_last_name" class="form-control" type="text" placeholder="Tên" required>
+                            	</div>
+                            	<div class="col-md-6" style="padding: 0px">
+                            		<select class="form-control" id="register_sex" placeholder="Giới tính">
+								        <option>Nam</option>
+								        <option>Nữ</option>
+									</select>
+                            	</div>	
+                        	</div>
+                        	<div class="col-md-6" style="padding: 0px">
+                            		<input id="register_birthday" class="form-control" type="text" placeholder="Ngày sinh" required>
+                            </div>
+                            	<div class="col-md-6" style="padding: 0px">
+                            		<input id="register_phone" class="form-control" type="text" placeholder="Số điện thoại liên lạc" required>
+                            	</div>
+                            <input id="register_country" class="form-control" type="text" placeholder="Quốc tịch" required>
+                            <input id="register_cmnd" class="form-control" type="text" placeholder="Số chứng minh thư" required>
+                            
             			</div>
 		    		    <div class="modal-footer">
                             <div>
@@ -287,7 +316,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col-md-6">
 					<div>
 					  <h2>Nơi khởi hành</h2>
-						<select class="form-control" id="sel1" style="width: 80%">
+						<select class="form-control" id="cb-start" style="width: 80%">
 					        <option>Đà Lạt</option>
 					        <option>Đà Nẵng</option>
 					        <option>Hà Nội</option>
@@ -296,11 +325,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div>
 					  <h2>Nơi đến</h2>
-						<select class="form-control" id="sel1" style="width: 80%">
+						<select class="form-control" id="cb-end" style="width: 80%">
 					        <option>Đà Lạt</option>
 					        <option>Đà Nẵng</option>
 					        <option>Hà Nội</option>
 					        <option>Hồ Chí Minh</option>
+						</select>
+					</div>
+					<div>
+					  <h2>Hạng ghế</h2>
+						<select class="form-control" id="cb-hang-ghe" style="width: 80%">
+					        <option>Phổ thông</option>
+					        <option>Phổ thông đặc biệt</option>
+					        <option>Thương gia</option>
 						</select>
 					</div>
 					<div class="clear"></div>
@@ -651,7 +688,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div>
 							<div class="col-md-4">
 								<h3>Người lớn</h3>
-								<select class="form-control" id="sel1" style="width: 50%">
+								<select class="form-control" id="cb-nguoi-lon" style="width: 50%">
 						        <option>1</option>
 						        <option>2</option>
 						        <option>3</option>
@@ -666,7 +703,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</div>
 							<div class="col-md-4">
 								<h3>Trẻ em</h3>
-								<select class="form-control" id="sel1" style="width: 50%">
+								<select class="form-control" id="cb-tre-em" style="width: 50%">
 						        <option>1</option>
 						        <option>2</option>
 						        <option>3</option>
@@ -678,7 +715,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</div>
 							<div class="col-md-4">
 								<h3>Em bé</h3>
-								<select class="form-control" id="sel1" style="width: 50%">
+								<select class="form-control" id="cb-em-be" style="width: 50%">
 						        <option>1</option>
 						        <option>2</option>
 						        <option>3</option>
@@ -689,12 +726,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</select>
 							</div>
 					</div>
+					<div>
+						<button type="button" class="btn btn-primary" style="margin-left: 15px; margin-top: 42px; width: 410px">
+							<h4>Đặt vé</h4>
+						</button>
+					</div>
 				</div>
-			</div>
-			<div style="text-align: right; padding-right: 8%">
-				<button type="button" class="btn btn-primary" style="margin-top: 20px; width: 410px">
-					<h4>Đặt vé</h4>
-				</button>
 			</div>
 		</div>
 		<!--//End-find-place-->
@@ -840,8 +877,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="wrap">
 				<ul>
 					<li><span>::</span><a href="index.html">Trang chủ</a><span>::</span></li>
-					<li><a href="destinations.html">Ưu đãi</a><span>::</span></li>
-					<li><a href="criuses.html">Blog</a><span>::</span></li>
+					<li><a href="dat-ve.html">Đặt vé</a><span>::</span></li>
+					<li><a href="criuses.html">Ưu đãi</a><span>::</span></li>
 					<li><a href="destinations.html">Liên hệ</a><span>::</span></li>
 					<div class="clear"> </div>
 				</ul>
